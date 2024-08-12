@@ -19,11 +19,12 @@ import ScrollAnimation from "./utils/ScrollAnimation";
 
 export default function Experience() {
   const group = useRef();
+  const sparkles = useRef();
   const { camera } = useThree();
 
   Parallax(camera);
-  ScrollAnimation(camera);
-  ScrollAnimation(group);
+  ScrollAnimation(camera, 0, 0);
+  ScrollAnimation(sparkles, 0.15, 0);
 
   return (
     <>
@@ -34,13 +35,19 @@ export default function Experience() {
       {/* Light & Environment */}
       <Environment preset="studio" environmentIntensity={0.75} />
 
-      {/* Scene Group*/}
-      <group ref={group}>
-        <Guitar></Guitar>
-      </group>
+      {/* Model*/}
+      <Guitar></Guitar>
 
       {/* Element */}
-      <Sparkles speed={0.1} size={0.3} color={"#D4AD49"} count={200} />
+      <Sparkles
+        ref={sparkles}
+        speed={0.1}
+        size={0.3}
+        color={"#D4AD49"}
+        count={100}
+        noise={10}
+        scale={[1.5, 1, 1]}
+      />
     </>
   );
 }

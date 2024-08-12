@@ -1,32 +1,14 @@
-* {
-  margin: 0;
-  padding: 0;
+/* Import fonts */
+@font-face {
+  font-family: "Melodrama";
+  src: url("../public/fonts/Melodrama_Complete/Fonts/Melodrama-Variable.ttf")
+    format("truetype");
+  font-weight: 300 700;
+  font-display: swap;
+  font-style: normal;
 }
 
-html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-}
-
-html,
-body,
-#root {
-  height: 300vh;
-}
-
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.test {
-  height: 300vh;
-}
-
+/* Lenis Smooth Scroll */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -46,4 +28,124 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+/* CSS Variables */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --gold-secondary: #d4ad49;
+  --red-cta: #bb1616;
+}
+
+/* Global Layout */
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/* body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+} */
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.flex,
+.container.flex {
+  display: flex;
+}
+
+/* Text Special */
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Text Style classes */
+h1,
+h2,
+h3 {
+  font-family: "Melodrama";
+  font-weight: 300;
+}
+
+h4,
+.meta {
+  font-weight: 300;
+}
+
+.header-text,
+.footer-link {
+  font-weight: 350;
+}
+
+.body {
+  font-weight: 400;
+}
+
+.button {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: calc(62px + (100 - 62) * ((100vw - 320px) / (1440 - 320)));
+}
+
+h2 {
+  font-size: calc(34px + (56 - 34) * ((100vw - 320px) / (1440 - 320)));
+}
+
+h3,
+h4 {
+  /* font-size: calc(24px + (24 - 24) * ((100vw - 320px) / (1440 - 320))); */
+  font-size: 24;
+}
+
+.body,
+.button,
+.footer-link {
+  font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1440 - 320)));
+  line-height: 28.8px;
+}
+
+.meta,
+.header-text {
+  font-size: calc(10px + (14 - 10) * ((100vw - 320px) / (1440 - 320)));
+  line-height: 22.4px;
 }

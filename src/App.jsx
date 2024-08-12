@@ -1,9 +1,15 @@
-import { Canvas } from "@react-three/fiber";
-import Experience from "./experience/Experience.jsx";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import Header from "./components/Header/Header.jsx";
+import Index from "./pages/index.jsx";
 import "./App.css";
 
 function App() {
@@ -30,18 +36,16 @@ function App() {
 
   return (
     <>
-      <Canvas
-        camera={{
-          fov: 75,
-          near: 0.001,
-          far: 200,
-          position: [0, 0, 1],
-        }}
-        style={{ position: "fixed", top: "0", left: "0", zIndex: "-1" }}
-      >
-        <Experience />
-      </Canvas>
-      <div className="test"></div>
+      <Router>
+        {/* {window.innerWidth > 760 && <Cursor></Cursor>} */}
+        <Routes>
+          <Route path="/" element={<Index />} />
+          {/* <Route path="/projects" element={<Projects />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/about" element={<About />} /> */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Router>
     </>
   );
 }

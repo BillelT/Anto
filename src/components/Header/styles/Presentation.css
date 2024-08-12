@@ -1,0 +1,14 @@
+.scroll-line-container {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+}
+
+.animated-scroll-line {
+  width: 1px;
+  height: 60px;
+  background-color: var(--gold-secondary);
+  transform-origin: top;
+  transform: scaleY(0);
+  will-change: transform;
+}

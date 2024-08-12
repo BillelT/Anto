@@ -10,9 +10,17 @@ export default function Guitar() {
   const guitar = useRef();
   const model = useGLTF("/src/assets/models/4.glb");
 
+  ScrollAnimation(guitar, 0.1, -0.25);
+
+  const offsetX = window.innerWidth < 780 ? 0.3 : 0;
+
   return (
     <>
-      <primitive ref={guitar} object={model.scene} position={[0, -0.25, 0]} />
+      <primitive
+        ref={guitar}
+        object={model.scene}
+        position={[offsetX, -0.25, 0]}
+      />
     </>
   );
 }

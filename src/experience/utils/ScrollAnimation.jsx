@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ScrollAnimation(element) {
+export default function ScrollAnimation(element, delay = 0, offset = 0) {
   let scrollY = window.scrollY;
   const elementScrolling = useRef(scrollY);
 
@@ -21,9 +21,13 @@ export default function ScrollAnimation(element) {
       start: "top top",
       end: "bottom bottom",
       scrub: true,
-      markers: true,
+      // markers: true,
       onUpdate: (self) => {
-        elementScrolling.current = self.progress * 2.5;
+        gsap.to(elementScrolling, {
+          current: self.progress * 0.2,
+          delay,
+          overwrite: false,
+        });
       },
     });
 
@@ -33,7 +37,7 @@ export default function ScrollAnimation(element) {
   useFrame(() => {
     const target = element.current ? element.current : element;
     if (target) {
-      target.position.y = -elementScrolling.current;
+      target.position.y = -elementScrolling.current + offset;
     }
   });
 
