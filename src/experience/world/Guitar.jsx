@@ -8,7 +8,7 @@ import ScrollAnimation from "../utils/ScrollAnimation";
 
 export default function Guitar() {
   const guitar = useRef();
-  const model = useGLTF("/src/assets/models/4.glb");
+  const model = useGLTF("./experience/models/4.glb");
 
   ScrollAnimation(guitar, 0.2, -0.25);
 
