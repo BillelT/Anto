@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import "./styles/Presentation.css";
+import "./Presentation.css";
 
 export default function Presentation() {
   const scrollLine = useRef();

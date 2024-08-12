@@ -24,7 +24,7 @@ export default function Experience() {
 
   Parallax(camera);
   ScrollAnimation(camera, 0, 0);
-  ScrollAnimation(sparkles, 0.15, 0);
+  ScrollAnimation(sparkles, 0.25, 0);
 
   return (
     <>

@@ -1,4 +1,9 @@
 /* Container Gaps */
+/* Column Gap */
+.cg-16 {
+  column-gap: 16px;
+}
+
 .cg-24 {
   column-gap: 24px;
 }
@@ -11,6 +16,16 @@
 
 /* Childrens Position */
 
+.sticky {
+  top: 0;
+  position: sticky;
+  height: fit-content;
+}
+
+.gc-f {
+  grid-column: 1/13;
+}
+
 .gc-2 {
   grid-column: 2;
 }
@@ -20,7 +35,8 @@
 }
 
 .gc-sm-2-9-ls-9-13,
-.gc-sm-2-9-ls-2-5 {
+.gc-sm-2-9-ls-2-5,
+.gc-sm-2-9-ls-7-11 {
   grid-column: 2/9;
 }
 
@@ -30,6 +46,9 @@
   }
   .gc-sm-2-9-ls-2-5 {
     grid-column: 2/5;
+  }
+  .gc-sm-2-9-ls-7-11 {
+    grid-column: 7/11;
   }
 }
 
@@ -57,6 +76,14 @@
 
 .pb-16 {
   padding-bottom: 16px;
+}
+
+.pb-32 {
+  padding-bottom: 32px;
+}
+
+.pb-64 {
+  padding-bottom: 64px;
 }
 
 /* Margin */

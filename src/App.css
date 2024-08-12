@@ -58,17 +58,6 @@ body {
   font-family: "Noto Sans JP", sans-serif;
 }
 
-/* body::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-} */
-
 canvas {
   position: fixed;
   top: 0;
@@ -82,8 +71,20 @@ canvas {
   grid-template-columns: repeat(12, 1fr);
 }
 
+.w-fit-c {
+  width: fit-content;
+}
+
 .h-100vh {
   height: 100vh;
+}
+
+.h-200vh {
+  height: 200vh;
+}
+
+.h-300vh {
+  height: 300vh;
 }
 
 .flex,
@@ -141,11 +142,30 @@ h4 {
 .button,
 .footer-link {
   font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1440 - 320)));
-  line-height: 28.8px;
+  line-height: calc(22.4px + (28.8 - 22.4) * ((100vw - 320px) / (1440 - 320)));
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 .meta,
 .header-text {
   font-size: calc(10px + (14 - 10) * ((100vw - 320px) / (1440 - 320)));
   line-height: 22.4px;
+}
+
+.kanji {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/* Border */
+
+.rounded {
+  border-radius: 50%;
+}
+
+/* Global elements */
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }

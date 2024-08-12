@@ -1,8 +1,11 @@
 import { Canvas } from "@react-three/fiber";
 import Header from "../components/Header/Header.jsx";
 import Experience from "../experience/Experience.jsx";
-import Presentation from "../components/Header/Presentation.jsx";
-import Legacy from "../components/Header/Legacy.jsx";
+import Presentation from "../components/Presentation/Presentation.jsx";
+import Legacy from "../components/Legacy/Legacy.jsx";
+import Performances from "../components/Performances/Performances.jsx";
+import Freedom from "../components/Freedom/Freedom.jsx";
+import Discover from "../components/Discover/Discover.jsx";
 
 export default function Index() {
   return (
@@ -10,6 +13,9 @@ export default function Index() {
       <Header />
       <Presentation />
       <Legacy />
+      <Performances />
+      <Freedom />
+      <Discover />
 
       <Canvas
         camera={{

@@ -1,0 +1,79 @@
+.color-choice {
+  width: 32px;
+  height: 32px;
+}
+
+.bg-black {
+  background-color: var(--black);
+}
+
+.active {
+  border: 1.5px solid var(--gold-secondary);
+}
+
+.cta {
+  position: relative;
+  padding: 8px 32px 8px 48px;
+}
+
+.cta.hover::before,
+.cta.hover::after {
+  height: 100%;
+}
+
+.hover .horizontal-border {
+  width: 100%;
+}
+
+.cta::before,
+.cta::after,
+.horizontal-border {
+  content: "";
+  position: absolute;
+  background-color: var(--red-cta);
+  will-change: width, height;
+  transition: 0.9s ease-in-out;
+}
+
+.cta::before,
+.cta::after {
+  width: 1px;
+  height: 24px;
+}
+
+.cta::before {
+  transform-origin: bottom;
+}
+
+.cta::after {
+  transform-origin: top;
+}
+
+.horizontal-border {
+  width: 24px;
+  height: 1px;
+}
+
+.horizontal-border.left {
+  transform-origin: left;
+}
+
+.horizontal-border.right {
+  transform-origin: right;
+}
+
+.cta::before,
+.horizontal-border.left {
+  bottom: 0;
+  left: 0;
+}
+
+.cta::after,
+.horizontal-border.right {
+  top: 0;
+  right: 0;
+}
+
+.hidden {
+  opacity: 0;
+}
