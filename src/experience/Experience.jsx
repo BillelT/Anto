@@ -7,8 +7,7 @@ import {
 } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import Debug from "./utils/Debug";
-import { useEffect, useRef } from "react";
-import { useThree } from "@react-three/fiber";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 /** Custom import */
@@ -19,7 +18,7 @@ import ScrollAnimation from "./utils/ScrollAnimation";
 
 //////////////////////////////////////////////////////////////////////////////////
 
-export default function Experience({ stopScrollAnimation }) {
+export default function Experience() {
   const sparkles = useRef();
   const cameraGroup = useRef();
   const camera = useRef();
@@ -32,12 +31,6 @@ export default function Experience({ stopScrollAnimation }) {
     if (camera) {
       gsap.to(camera.current.position, {
         z: 1,
-        duration: 2,
-        ease: "power1.inOut",
-      });
-      gsap.to(camera.current.rotation, {
-        y: 0,
-        z: 0,
         duration: 2,
         ease: "power1.inOut",
       });
@@ -59,8 +52,7 @@ export default function Experience({ stopScrollAnimation }) {
           fov={75}
           near={0.001}
           far={200}
-          position={[0, 0, 1.5]}
-          rotation={[0, 0.5, 0]}
+          position={[0, 0, 2]}
         />
       </group>
 

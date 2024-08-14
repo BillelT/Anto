@@ -21,12 +21,12 @@ export default function Index() {
         gsap.to(element, {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 1,
           ease: "power2.inOut",
           scrollTrigger: {
             trigger: element,
-            start: "-30% 15%",
-            end: "bottom 50%",
+            start: "-35% 15%",
+            end: "bottom 40%",
             markers: true,
             toggleActions: "play none play reverse",
           },

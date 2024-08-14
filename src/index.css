@@ -115,7 +115,7 @@
   grid-column: 2/9;
 }
 
-.gc-sm-2-12-ls-4-6,
+.gc-sm-2-12-ls-4-7,
 .gc-sm-2-12-ls-8-12 {
   grid-column: 2/12;
 }
@@ -133,8 +133,8 @@
     grid-column: 7/11;
   }
 
-  .gc-sm-2-12-ls-4-6 {
-    grid-column: 4/6;
+  .gc-sm-2-12-ls-4-7 {
+    grid-column: 4/7;
   }
 
   .gc-sm-2-12-ls-8-12 {
@@ -270,5 +270,5 @@
 
 .fade-in-text-reveal {
   opacity: 0;
-  transform: translateY(60px);
+  transform: translateY(80px);
 }

@@ -3,7 +3,7 @@ export default function Footer() {
     <>
       <footer className="container bg-black mt-256 pt-96-256 pb-32 rg-sm-96-ls-256 z-index-10 relative">
         <div className="container gc-f rg-64">
-          <article className="gc-sm-2-12-ls-4-6">
+          <article className="gc-sm-2-12-ls-4-7">
             <p className="meta gold-text mb-sm-32-ls-64">Modèles</p>
             <nav>
               <ul className="grid rg-8">
