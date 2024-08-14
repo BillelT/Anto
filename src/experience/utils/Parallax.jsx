@@ -4,9 +4,9 @@ import { useEffect, useRef } from "react";
 export default function Parallax(element) {
   const mousePosition = useRef({ x: 0, y: 0 });
 
-  const handleMouseMove = (event) => {
-    const x = event.clientX / window.innerWidth - 0.5;
-    const y = event.clientY / window.innerHeight - 0.5;
+  const handleMouseMove = (e) => {
+    const x = e.clientX / window.innerWidth - 0.5;
+    const y = e.clientY / window.innerHeight - 0.5;
     mousePosition.current = { x, y };
   };
 
@@ -17,16 +17,15 @@ export default function Parallax(element) {
     };
   }, []);
 
-  let parallaxX;
-  let parallaxY;
-
   useFrame((state, delta) => {
-    parallaxX = mousePosition.current.x * 0.25;
-    parallaxY = -mousePosition.current.y * 0.5;
+    const parallaxX = mousePosition.current.x * 0.5;
+    const parallaxY = -mousePosition.current.y * 0.5;
 
-    element.position.x += (parallaxX - element.position.x) * 1 * delta;
-    element.position.y += (parallaxY - element.position.y) * 1 * delta;
+    element.current.position.x +=
+      (parallaxX - element.current.position.x) * 1 * delta;
+    element.current.position.y +=
+      (parallaxY - element.current.position.y) * 1 * delta;
   });
 
-  return null;
+  return {};
 }

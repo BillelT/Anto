@@ -1,7 +1,7 @@
 /* Import fonts */
 @font-face {
   font-family: "Melodrama";
-  src: url("../public/fonts/Melodrama_Complete/Fonts/Melodrama-Variable.ttf")
+  src: url("./fonts/Melodrama_Complete/Fonts/Melodrama-Variable.ttf")
     format("truetype");
   font-weight: 300 700;
   font-display: swap;
@@ -35,6 +35,7 @@ html.lenis body {
   --white: #ffffff;
   --black: #000000;
   --gold-secondary: #d4ad49;
+  --difference-gold-secondary: #2b52b6;
   --red-cta: #bb1616;
 }
 
@@ -71,8 +72,21 @@ canvas {
   grid-template-columns: repeat(12, 1fr);
 }
 
+.bg-black {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.white-text {
+  color: var(--white);
+}
+
 .w-fit-c {
   width: fit-content;
+}
+
+.w-max-c {
+  width: max-content;
 }
 
 .h-100vh {
@@ -92,6 +106,22 @@ canvas {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
+@media screen and (min-width: 780px) {
+  .ls-flex {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .l-ls-flex {
+    display: flex;
+  }
+}
+
 /* Text Special */
 .underline {
   text-decoration: underline;
@@ -100,13 +130,11 @@ canvas {
 
 /* Text Style classes */
 h1,
-h2,
-h3 {
+h2 {
   font-family: "Melodrama";
   font-weight: 300;
 }
 
-h4,
 .meta {
   font-weight: 300;
 }
@@ -129,13 +157,13 @@ h1 {
 }
 
 h2 {
-  font-size: calc(34px + (56 - 34) * ((100vw - 320px) / (1440 - 320)));
+  font-size: calc(44px + (56 - 44) * ((100vw - 320px) / (1440 - 320)));
 }
 
-h3,
-h4 {
+h3 {
   /* font-size: calc(24px + (24 - 24) * ((100vw - 320px) / (1440 - 320))); */
-  font-size: 24;
+  font-size: 24px;
+  font-weight: 300;
 }
 
 .body,
@@ -148,12 +176,16 @@ h4 {
 
 .meta,
 .header-text {
-  font-size: calc(10px + (14 - 10) * ((100vw - 320px) / (1440 - 320)));
+  font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (1440 - 320)));
   line-height: 22.4px;
 }
 
 .kanji {
   font-family: "Noto Sans JP", sans-serif;
+}
+
+.gold-text {
+  color: var(--gold-secondary);
 }
 
 /* Border */
@@ -162,10 +194,18 @@ h4 {
   border-radius: 50%;
 }
 
+.border-bottom {
+  border-bottom: 1px solid var(--white);
+}
+
 /* Global elements */
 
 button {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+.mix-blend-diff {
+  mix-blend-mode: difference;
 }

@@ -1,11 +1,14 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Discover.css";
 import gsap from "gsap";
 
 export default function Discover() {
   const ctaArrow = useRef();
+  const discover = useRef();
 
-  const ctaButtonAnimation = (event) => {
+  let ctaButtonAnimation, removeButtonAnimation;
+
+  ctaButtonAnimation = (event) => {
     event.currentTarget.classList.add("hover");
     gsap.to(ctaArrow.current, {
       x: "16px",
@@ -15,7 +18,7 @@ export default function Discover() {
     });
   };
 
-  const removeButtonAnimation = (event) => {
+  removeButtonAnimation = (event) => {
     event.currentTarget.classList.remove("hover");
     gsap.to(ctaArrow.current, {
       x: "0",
@@ -28,9 +31,13 @@ export default function Discover() {
   return (
     <>
       <section className="container h-100vh">
-        <div className="gc-sm-2-9-ls-7-11 pt-192-320 ">
+        <div
+          ref={discover}
+          id="discover"
+          className="gc-sm-2-9-ls-7-11 pt-192-320 fade-in-text-reveal"
+        >
           <h2 className="pb-16">
-            Anto <span className="">案外</span>
+            Anto <span className="kanji">アント</span>
           </h2>
           <p className="body pb-32">
             Modèle signature d'Anto. <br /> Conçu il y a plus de 100 ans, ce

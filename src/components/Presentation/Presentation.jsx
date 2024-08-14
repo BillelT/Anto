@@ -28,15 +28,15 @@ export default function Presentation() {
   return (
     <>
       <section className="container  h-100vh">
-        <div className="gc-sm-2-9-ls-9-13 max-w-90 pt-192-320 ">
+        <div className="gc-sm-2-9-ls-9-13 max-w-90 pt-192-320 fade-in-text-reveal ">
           <h1 className="pb-16">Anto</h1>
           <p className="body pb-8">
-            En japonais, le terme "Anto" (案外) évoque le réconfort et
-            l'apaisement.
+            Depuis toujours, Anto croit que la musique est une source de
+            réconfort et d'apaisement.
           </p>
           <p className="body">
-            Nous concevons chaque instrument dans l'espoir que ses notes vous
-            offriront une évasion et une sérénité profondes.
+            Chaque guitare que nous concevons est façonnée avec passion, dans
+            l'espoir que ses notes vous offrent une sérénité profonde.
           </p>
         </div>
         <div className="scroll-line-container">
