@@ -7,14 +7,14 @@ import {
 } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import Debug from "./utils/Debug";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 /** Custom import */
 
-import Guitar from "./world/Guitar";
-import Parallax from "./utils/Parallax";
-import ScrollAnimation from "./utils/ScrollAnimation";
+import Guitar from "./world/Guitar.jsx";
+import Parallax from "./utils/Parallax.jsx";
+import ScrollAnimation from "./utils/ScrollAnimation.jsx";
 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ export default function Experience() {
   ScrollAnimation(sparkles, 0.35, 0);
 
   useEffect(() => {
-    if (camera) {
+    if (camera.current) {
       gsap.to(camera.current.position, {
         z: 1,
         duration: 2,
@@ -44,7 +44,9 @@ export default function Experience() {
       {/* <Perf position="top-left" /> */}
 
       {/* Light & Environment */}
+      {/* <Environment preset="studio" environmentIntensity={0.75} /> */}
       <Environment preset="studio" environmentIntensity={0.75} />
+
       <group ref={cameraGroup}>
         <PerspectiveCamera
           ref={camera}

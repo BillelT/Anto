@@ -1,7 +1,7 @@
 /* Import fonts */
 @font-face {
   font-family: "Melodrama";
-  src: url("../public/fonts/Melodrama_Complete/Fonts/Melodrama-Variable.ttf")
+  src: url("/fonts/Melodrama_Complete/Fonts/Melodrama-Variable.ttf")
     format("truetype");
   font-weight: 300 700;
   font-display: swap;

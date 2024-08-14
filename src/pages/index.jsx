@@ -27,7 +27,7 @@ export default function Index() {
             trigger: element,
             start: "-35% 15%",
             end: "bottom 40%",
-            markers: true,
+            // markers: true,
             toggleActions: "play none play reverse",
           },
         });
