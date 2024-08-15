@@ -37,3 +37,13 @@
   right: 0;
   margin: auto;
 }
+
+.loading {
+  position: fixed;
+  bottom: 32px;
+}
+
+.loaded-content {
+  opacity: 0;
+  transform: translateY(20px);
+}

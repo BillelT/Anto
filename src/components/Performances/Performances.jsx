@@ -3,7 +3,7 @@ export default function Performances() {
     <>
       <section className="container h-300vh">
         <article className="h-100vh gc-f"></article>
-        <article className="h-200vh gc-f container">
+        <article className="h-200vh gc-f container" id="performances">
           <div className="gc-sm-2-9-ls-2-5 pt-192-320 max-w-90 sticky fade-in-text-reveal">
             <h2 className="pb-16">Sonorité & Longévité</h2>
             <p className="body">

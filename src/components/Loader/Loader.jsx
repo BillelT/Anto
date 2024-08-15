@@ -3,17 +3,63 @@ import gsap from "gsap";
 import "./Loader.css";
 
 export default function Loader({ progress, handleStart }) {
+  const logo = useRef();
   const clipPathLogo = useRef();
   const loadingMeta = useRef();
+  const enter = useRef();
+  const loadedMeta = useRef();
+
+  const loadedGsapOptions = {
+    opacity: 0,
+    y: -20,
+    duration: 0.6,
+    ease: "power2.in",
+  };
 
   useEffect(() => {
-    gsap.to(clipPathLogo.current, {
-      duration: 0.2,
-      ease: "power1.inOut",
-      clipPath: `polygon(0 ${100 - progress}%, 100% ${
-        100 - progress
-      }%, 100% 100%, 0% 100%`,
-    });
+    if (clipPathLogo.current) {
+      gsap.to(clipPathLogo.current, {
+        duration: 0.2,
+        ease: "power1.inOut",
+        clipPath: `polygon(0 ${100 - progress}%, 100% ${
+          100 - progress
+        }%, 100% 100%, 0% 100%`,
+      });
+    }
+
+    if (progress === 100) {
+      gsap.to(logo.current, {
+        ...loadedGsapOptions,
+        onComplete: () => {
+          gsap.set(logo.current, { display: "none" });
+
+          gsap.to(enter.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+          });
+          gsap.to(loadedMeta.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+          });
+        },
+      });
+      gsap.to(clipPathLogo.current, {
+        ...loadedGsapOptions,
+        onComplete: () => {
+          gsap.set(clipPathLogo.current, { display: "none" });
+        },
+      });
+      gsap.to(loadingMeta.current, {
+        ...loadedGsapOptions,
+        onComplete: () => {
+          gsap.set(loadingMeta.current, { display: "none" });
+        },
+      });
+    }
   }, [progress]);
 
   useEffect(() => {
@@ -39,31 +85,32 @@ export default function Loader({ progress, handleStart }) {
 
   return (
     <>
-      <div className="loader">
+      <div className="loader" onClick={progress === 100 ? handleStart : null}>
         <img
+          ref={logo}
           src="./Logo/Logo Loader unload white.svg"
           alt="Logo Anto couleur white"
           className="center"
         />
+
         <img
           ref={clipPathLogo}
           src="./Logo/Logo Loader load gold.svg"
           alt="Logo Anto couleur or"
           className="center"
         />
-        <div className="loader-information">
-          {progress === 100 && (
-            <button
-              className="body white-text hover-underline-from-center red launch"
-              onClick={handleStart}
-            >
-              Enter
-            </button>
-          )}
-          <span className="meta" ref={loadingMeta}>
-            Chargement
-          </span>
-        </div>
+        <span className="meta loading" ref={loadingMeta}>
+          Chargement
+        </span>
+        <button
+          ref={enter}
+          className="body white-text hover-underline-from-center red launch center loaded-content"
+        >
+          Enter
+        </button>
+        <span className="meta loading loaded-content" ref={loadedMeta}>
+          Terminé !
+        </span>
       </div>
     </>
   );
