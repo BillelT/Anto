@@ -12,7 +12,7 @@ export default function Guitar({ onGuitarLoaded }) {
 
   useEffect(() => {
     if (guitar.current) {
-      console.log("gui");
+      // console.log("gui");
     }
   });
 

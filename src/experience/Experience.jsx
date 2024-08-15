@@ -18,7 +18,7 @@ import ScrollAnimation from "./utils/ScrollAnimation.jsx";
 
 //////////////////////////////////////////////////////////////////////////////////
 
-export default function Experience() {
+export default function Experience({ isStarted }) {
   const sparkles = useRef();
   const cameraGroup = useRef();
   const camera = useRef();
@@ -28,14 +28,14 @@ export default function Experience() {
   ScrollAnimation(sparkles, 0.35, 0);
 
   useEffect(() => {
-    if (camera.current) {
+    if (camera.current && isStarted) {
       gsap.to(camera.current.position, {
         z: 1,
         duration: 2,
         ease: "power1.inOut",
       });
     }
-  }, []);
+  }, [isStarted, camera]);
 
   return (
     <>

@@ -248,6 +248,10 @@
   background-color: var(--gold-secondary);
 }
 
+.hover-underline-from-center.red::after {
+  background-color: var(--red-cta);
+}
+
 .hover-underline-from-center.gold-diff::after {
   background-color: var(--difference-gold-secondary);
 }

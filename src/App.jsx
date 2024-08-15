@@ -39,7 +39,7 @@ function App() {
       <Router>
         {/* {window.innerWidth > 760 && <Cursor></Cursor>} */}
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Index lenis={lenis} />} />
           {/* <Route path="/projects" element={<Projects />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} /> */}
