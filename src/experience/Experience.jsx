@@ -23,7 +23,7 @@ export default function Experience({ isStarted }) {
   const cameraGroup = useRef();
   const camera = useRef();
 
-  // Parallax(cameraGroup);
+  Parallax(cameraGroup);
   // ScrollAnimation(camera, 0, 0);
   // ScrollAnimation(sparkles, 0.35, 0);
 

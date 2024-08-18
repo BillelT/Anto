@@ -18,8 +18,8 @@ export default function Parallax(element) {
   }, []);
 
   useFrame((state, delta) => {
-    const parallaxX = mousePosition.current.x * 0.5;
-    const parallaxY = -mousePosition.current.y * 0.5;
+    const parallaxX = mousePosition.current.x * 0.1;
+    const parallaxY = -mousePosition.current.y * 0.1;
 
     element.current.position.x +=
       (parallaxX - element.current.position.x) * 1 * delta;

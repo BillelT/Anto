@@ -38,9 +38,9 @@ export default function Discover() {
             id="discover"
             className="gc-sm-2-9-ls-7-11 pt-192-320 fade-in-text-reveal"
           >
-            <h3 className="pb-16">
-              Anto <span className="kanji">アント</span>
-            </h3>
+            <h2 className="pb-16">
+              Anto <span className="kanji body">アント</span>
+            </h2>
             <p className="body pb-32">
               Modèle signature d'Anto. <br /> Conçu il y a plus de 100 ans, ce
               modèle emblématique compte seulement 500 exemplaires.
