@@ -11,7 +11,7 @@ export default function Loader({ progress, handleStart }) {
 
   const loadedGsapOptions = {
     opacity: 0,
-    y: -20,
+    y: -10,
     duration: 0.6,
     ease: "power2.in",
   };
@@ -41,7 +41,6 @@ export default function Loader({ progress, handleStart }) {
           });
           gsap.to(loadedMeta.current, {
             opacity: 1,
-            y: 0,
             duration: 0.6,
             ease: "power2.out",
           });
@@ -54,7 +53,9 @@ export default function Loader({ progress, handleStart }) {
         },
       });
       gsap.to(loadingMeta.current, {
-        ...loadedGsapOptions,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.in",
         onComplete: () => {
           gsap.set(loadingMeta.current, { display: "none" });
         },
@@ -104,11 +105,11 @@ export default function Loader({ progress, handleStart }) {
         </span>
         <button
           ref={enter}
-          className="body white-text hover-underline-from-center red launch center loaded-content"
+          className="body white-text hover-underline-from-center red launch center opacity-0 y-20"
         >
           Enter
         </button>
-        <span className="meta loading loaded-content" ref={loadedMeta}>
+        <span className="meta loading opacity-0" ref={loadedMeta}>
           Terminé !
         </span>
       </div>

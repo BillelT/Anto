@@ -9,7 +9,7 @@ import { useControls } from "leva";
 export default function Guitar() {
   const guitar = useRef();
   const guitarGroup = useRef();
-  const { scene } = useGLTF("./experience/models/4.glb");
+  const { scene } = useGLTF("./experience/models/Guitar.glb");
 
   // const { rotationY, posX, posY, posZ } = useControls("guitarGroup", {
   //   rotationY: {
