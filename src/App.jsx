@@ -8,9 +8,9 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Header from "./components/Header/Header.jsx";
 import Index from "./pages/index.jsx";
 import "./App.css";
+import Cursor from "./components/Cursor/Cursor.jsx";
 
 function App() {
   const [lenis, setLenis] = useState(null);
@@ -37,7 +37,7 @@ function App() {
   return (
     <>
       <Router>
-        {/* {window.innerWidth > 760 && <Cursor></Cursor>} */}
+        {window.innerWidth > 400 && <Cursor />}
         <Routes>
           <Route path="/" element={<Index lenis={lenis} />} />
           {/* <Route path="/projects" element={<Projects />} />

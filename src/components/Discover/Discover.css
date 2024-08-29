@@ -11,6 +11,23 @@
   border: 1.5px solid var(--gold-secondary);
 }
 
+.bg-blue {
+  background-color: blue;
+}
+
+.bg-white {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-purple {
+  background-color: purple;
+}
+
 .cta {
   position: relative;
   padding: 8px 32px 8px 57px;

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./Discover.css";
 import gsap from "gsap";
 
-export default function Discover() {
+export default function Discover({ handleGuitarColorIndex }) {
   const ctaArrow = useRef();
   const discover = useRef();
 
@@ -46,11 +46,31 @@ export default function Discover() {
               modèle emblématique compte seulement 500 exemplaires.
             </p>
             <div className="flex cg-16 w-fit-c pb-64">
-              <article className="rounded color-choice active bg-black"></article>
-              <article className="rounded color-choice bg-black"></article>
-              <article className="rounded color-choice bg-black"></article>
-              <article className="rounded color-choice bg-black"></article>
-              <article className="rounded color-choice bg-black"></article>
+              <article
+                className="rounded color-choice pointer active bg-black"
+                onClick={handleGuitarColorIndex}
+                data-index={0}
+              ></article>
+              <article
+                className="rounded color-choice pointer bg-blue"
+                onClick={handleGuitarColorIndex}
+                data-index={1}
+              ></article>
+              <article
+                className="rounded color-choice pointer bg-white"
+                onClick={handleGuitarColorIndex}
+                data-index={2}
+              ></article>
+              <article
+                className="rounded color-choice pointer bg-red"
+                onClick={handleGuitarColorIndex}
+                data-index={3}
+              ></article>
+              <article
+                className="rounded color-choice pointer bg-purple"
+                onClick={handleGuitarColorIndex}
+                data-index={4}
+              ></article>
             </div>
             <button
               className="button cta"

@@ -13,27 +13,38 @@ import Performances from "../components/Performances/Performances.jsx";
 import Freedom from "../components/Freedom/Freedom.jsx";
 import Discover from "../components/Discover/Discover.jsx";
 import Footer from "../components/Footer/Footer.jsx";
+import Video from "../components/Video/Video.jsx";
 
 export default function Index({ lenis }) {
   const { progress } = useProgress();
   const [isStarted, setIsStarted] = useState(false);
+  const [isAnimationSkipped, setAnimationSkipped] = useState(false);
+  const [guitarColorIndex, setGuitarColorIndex] = useState(0);
 
   const handleStart = () => {
     setIsStarted(true);
   };
 
+  const handleAnimationSkipped = () => {
+    setAnimationSkipped(true);
+  };
+
+  const handleGuitarColorIndex = (e) => {
+    setGuitarColorIndex(e.target.dataset.index);
+  };
+
   useEffect(() => {
-    if (lenis && !isStarted) {
+    if (lenis && !isAnimationSkipped) {
       lenis.stop();
     }
 
-    if (lenis && isStarted) {
+    if (lenis && isAnimationSkipped) {
       lenis.start();
     }
-  }, [isStarted, lenis]);
+  }, [isAnimationSkipped, lenis]);
 
   useEffect(() => {
-    if (!isStarted) return;
+    if (!isAnimationSkipped) return;
     const fadeInTexts = document.querySelectorAll(".fade-in-text-reveal");
 
     fadeInTexts.forEach((element) => {
@@ -53,23 +64,33 @@ export default function Index({ lenis }) {
         });
       }
     });
-  }, [isStarted]);
+  }, [isAnimationSkipped]);
 
   return (
     <>
       {!isStarted && <Loader progress={progress} handleStart={handleStart} />}
+
+      {!isAnimationSkipped && (
+        <Video
+          handleAnimationSkipped={handleAnimationSkipped}
+          isStarted={isStarted}
+        />
+      )}
 
       <Header />
       <Presentation />
       <Legacy />
       <Performances />
       <Freedom />
-      <Discover />
+      <Discover handleGuitarColorIndex={handleGuitarColorIndex} />
       <Footer />
 
       <Canvas style={{ position: "fixed", top: "0", left: "0", zIndex: "-1" }}>
         <Suspense fallback={null}>
-          <Experience isStarted={isStarted} />
+          <Experience
+            isStarted={isStarted}
+            guitarColorIndex={guitarColorIndex}
+          />
         </Suspense>
       </Canvas>
     </>

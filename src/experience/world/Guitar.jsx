@@ -6,39 +6,40 @@ import { useControls } from "leva";
 
 ///////////////////////////////////////////
 
-export default function Guitar() {
+export default function Guitar({ guitarColorIndex }) {
   const guitar = useRef();
   const guitarGroup = useRef();
   const { scene } = useGLTF("./experience/models/Guitar.glb");
 
-  // const { rotationY, posX, posY, posZ } = useControls("guitarGroup", {
-  //   rotationY: {
-  //     value: 0,
-  //     min: -12,
-  //     max: 12,
-  //     step: 0.01,
-  //   },
-  //   posX: {
-  //     value: 0,
-  //     min: -3,
-  //     max: 3,
-  //     step: 0.001,
-  //   },
-  //   posY: {
-  //     value: 0,
-  //     min: -3,
-  //     max: 3,
-  //     step: 0.001,
-  //   },
-  //   posZ: {
-  //     value: 0,
-  //     min: -3,
-  //     max: 3,
-  //     step: 0.001,
-  //   },
-  // });
-
   // ScrollAnimation(guitar, 0.2, -0.25);
+
+  useEffect(() => {
+    if (guitarColorIndex == 0) {
+      scene.children[0].children[0].material.color.r = 0;
+      scene.children[0].children[0].material.color.g = 0;
+      scene.children[0].children[0].material.color.b = 0;
+    }
+    if (guitarColorIndex == 1) {
+      scene.children[0].children[0].material.color.r = 0.2;
+      scene.children[0].children[0].material.color.g = 0.2;
+      scene.children[0].children[0].material.color.b = 1;
+    }
+    if (guitarColorIndex == 2) {
+      scene.children[0].children[0].material.color.r = 1;
+      scene.children[0].children[0].material.color.g = 1;
+      scene.children[0].children[0].material.color.b = 1;
+    }
+    if (guitarColorIndex == 3) {
+      scene.children[0].children[0].material.color.r = 1;
+      scene.children[0].children[0].material.color.g = 0.2;
+      scene.children[0].children[0].material.color.b = 0.2;
+    }
+    if (guitarColorIndex == 4) {
+      scene.children[0].children[0].material.color.r = 1;
+      scene.children[0].children[0].material.color.g = 0.2;
+      scene.children[0].children[0].material.color.b = 1;
+    }
+  }, [guitarColorIndex]);
 
   useEffect(() => {
     if (guitarGroup.current) {
@@ -108,7 +109,7 @@ export default function Guitar() {
       gsap.to(guitarGroup.current.position, {
         x: window.innerWidth < 780 ? 0.02 : -0.4,
         y: 0,
-        z: 0.25,
+        z: 0.15,
         ease: "power1.inOut",
         immediateRender: false,
         scrollTrigger: {

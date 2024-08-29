@@ -18,7 +18,7 @@ import ScrollAnimation from "./utils/ScrollAnimation.jsx";
 
 //////////////////////////////////////////////////////////////////////////////////
 
-export default function Experience({ isStarted }) {
+export default function Experience({ isStarted, guitarColorIndex }) {
   const sparkles = useRef();
   const cameraGroup = useRef();
   const camera = useRef();
@@ -44,7 +44,6 @@ export default function Experience({ isStarted }) {
       {/* <Perf position="top-left" /> */}
 
       {/* Light & Environment */}
-      {/* <Environment preset="studio" environmentIntensity={0.75} /> */}
       <Environment preset="studio" environmentIntensity={0.75} />
 
       <group ref={cameraGroup}>
@@ -59,7 +58,7 @@ export default function Experience({ isStarted }) {
       </group>
 
       {/* Model*/}
-      <Guitar></Guitar>
+      <Guitar guitarColorIndex={guitarColorIndex}></Guitar>
 
       {/* Element */}
       <Sparkles
