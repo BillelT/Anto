@@ -37,7 +37,7 @@ function App() {
   return (
     <>
       <Router>
-        {window.innerWidth > 400 && <Cursor />}
+        {window.innerWidth > 780 && <Cursor />}
         <Routes>
           <Route path="/" element={<Index lenis={lenis} />} />
           {/* <Route path="/projects" element={<Projects />} />

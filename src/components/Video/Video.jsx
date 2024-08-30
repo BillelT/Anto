@@ -56,6 +56,7 @@ export default function Video({ isStarted, handleAnimationSkipped }) {
       >
         <video
           ref={animation}
+          controls={false}
           onEnded={handleAnimationEnded}
           className="video video-animation full-page-child"
         >
