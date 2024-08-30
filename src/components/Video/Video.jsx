@@ -17,6 +17,16 @@ export default function Video({ isStarted, handleAnimationSkipped }) {
     }, 1);
   };
 
+  const handleAnimationEnded = () => {
+    console.log("end");
+    gsap.to(videoContainer.current, {
+      opacity: 0,
+      duration: 0.6,
+      ease: "power1.out",
+    });
+    handleAnimationSkipped();
+  };
+
   const handleMouseUpOrLeave = () => {
     clearInterval(interval.current);
     interval.current = null;
@@ -46,7 +56,7 @@ export default function Video({ isStarted, handleAnimationSkipped }) {
       >
         <video
           ref={animation}
-          loop
+          onEnded={handleAnimationEnded}
           className="video video-animation full-page-child"
         >
           <source src="/video/Version Complete 02.mp4" type="video/mp4" />

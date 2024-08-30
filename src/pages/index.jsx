@@ -18,7 +18,7 @@ import Video from "../components/Video/Video.jsx";
 export default function Index({ lenis }) {
   const { progress } = useProgress();
   const [isStarted, setIsStarted] = useState(false);
-  const [isAnimationSkipped, setAnimationSkipped] = useState(false);
+  const [isAnimationEnded, setAnimationEnded] = useState(false);
   const [guitarColorIndex, setGuitarColorIndex] = useState(0);
 
   const handleStart = () => {
@@ -26,7 +26,7 @@ export default function Index({ lenis }) {
   };
 
   const handleAnimationSkipped = () => {
-    setAnimationSkipped(true);
+    setAnimationEnded(true);
   };
 
   const handleGuitarColorIndex = (e) => {
@@ -34,17 +34,17 @@ export default function Index({ lenis }) {
   };
 
   useEffect(() => {
-    if (lenis && !isAnimationSkipped) {
+    if (lenis && !isAnimationEnded) {
       lenis.stop();
     }
 
-    if (lenis && isAnimationSkipped) {
+    if (lenis && isAnimationEnded) {
       lenis.start();
     }
-  }, [isAnimationSkipped, lenis]);
+  }, [isAnimationEnded, lenis]);
 
   useEffect(() => {
-    if (!isAnimationSkipped) return;
+    if (!isAnimationEnded) return;
     const fadeInTexts = document.querySelectorAll(".fade-in-text-reveal");
 
     fadeInTexts.forEach((element) => {
@@ -64,13 +64,13 @@ export default function Index({ lenis }) {
         });
       }
     });
-  }, [isAnimationSkipped]);
+  }, [isAnimationEnded]);
 
   return (
     <>
       {!isStarted && <Loader progress={progress} handleStart={handleStart} />}
 
-      {!isAnimationSkipped && (
+      {!isAnimationEnded && (
         <Video
           handleAnimationSkipped={handleAnimationSkipped}
           isStarted={isStarted}
@@ -88,7 +88,7 @@ export default function Index({ lenis }) {
       <Canvas style={{ position: "fixed", top: "0", left: "0", zIndex: "-1" }}>
         <Suspense fallback={null}>
           <Experience
-            isStarted={isStarted}
+            isAnimationEnded={isAnimationEnded}
             guitarColorIndex={guitarColorIndex}
           />
         </Suspense>

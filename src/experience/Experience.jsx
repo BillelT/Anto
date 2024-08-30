@@ -11,31 +11,27 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 /** Custom import */
-
 import Guitar from "./world/Guitar.jsx";
 import Parallax from "./utils/Parallax.jsx";
-import ScrollAnimation from "./utils/ScrollAnimation.jsx";
 
 //////////////////////////////////////////////////////////////////////////////////
 
-export default function Experience({ isStarted, guitarColorIndex }) {
+export default function Experience({ isAnimationEnded, guitarColorIndex }) {
   const sparkles = useRef();
   const cameraGroup = useRef();
   const camera = useRef();
 
-  Parallax(cameraGroup);
-  // ScrollAnimation(camera, 0, 0);
-  // ScrollAnimation(sparkles, 0.35, 0);
+  // Parallax(cameraGroup);
 
   useEffect(() => {
-    if (camera.current && isStarted) {
+    if (camera.current && isAnimationEnded) {
       gsap.to(camera.current.position, {
         z: 1,
         duration: 2,
         ease: "power1.inOut",
       });
     }
-  }, [isStarted, camera]);
+  }, [isAnimationEnded, camera]);
 
   return (
     <>
@@ -53,12 +49,15 @@ export default function Experience({ isStarted, guitarColorIndex }) {
           fov={75}
           near={0.001}
           far={200}
-          position={[0, 0, 2]}
+          position={[0, 0, 1.5]}
         />
       </group>
 
       {/* Model*/}
-      <Guitar guitarColorIndex={guitarColorIndex}></Guitar>
+      <Guitar
+        guitarColorIndex={guitarColorIndex}
+        isAnimationEnded={isAnimationEnded}
+      ></Guitar>
 
       {/* Element */}
       <Sparkles

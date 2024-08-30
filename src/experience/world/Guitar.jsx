@@ -1,17 +1,17 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useGLTF } from "@react-three/drei";
-import ScrollAnimation from "../utils/ScrollAnimation";
 import gsap from "gsap";
-import { useControls } from "leva";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 ///////////////////////////////////////////
 
-export default function Guitar({ guitarColorIndex }) {
+export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
   const guitar = useRef();
   const guitarGroup = useRef();
+  const [offsetX, setOffsetX] = useState(window.innerWidth < 780 ? 0.2 : 0);
   const { scene } = useGLTF("./experience/models/Guitar.glb");
-
-  // ScrollAnimation(guitar, 0.2, -0.25);
 
   useEffect(() => {
     if (guitarColorIndex == 0) {
@@ -42,7 +42,7 @@ export default function Guitar({ guitarColorIndex }) {
   }, [guitarColorIndex]);
 
   useEffect(() => {
-    if (guitarGroup.current) {
+    if (guitarGroup.current && isAnimationEnded) {
       // Legacy to performances
       gsap.to(guitarGroup.current.position, {
         x: window.innerWidth < 780 ? -0.16 : 0.05,
@@ -51,11 +51,11 @@ export default function Guitar({ guitarColorIndex }) {
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: "#legacy",
-          start: "bottom 60%",
+          start: "100% 60%",
           endTrigger: "#performances",
           end: "top 60%",
           scrub: true,
-          // markers: true,
+          markers: true,
           toggleActions: "play none none reverse",
         },
       });
@@ -137,9 +137,19 @@ export default function Guitar({ guitarColorIndex }) {
         },
       });
     }
-  }, [guitarGroup.current]);
+  }, [guitarGroup, isAnimationEnded]);
 
-  const offsetX = window.innerWidth < 780 ? 0.2 : 0;
+  useEffect(() => {
+    const handleResize = () => {
+      setOffsetX(window.innerWidth < 780 ? 0.2 : 0);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <>
