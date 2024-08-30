@@ -21,7 +21,7 @@ export default function Experience({ isAnimationEnded, guitarColorIndex }) {
   const cameraGroup = useRef();
   const camera = useRef();
 
-  // Parallax(cameraGroup);
+  Parallax(cameraGroup);
 
   useEffect(() => {
     if (camera.current && isAnimationEnded) {

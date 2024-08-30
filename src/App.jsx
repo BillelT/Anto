@@ -14,6 +14,19 @@ import Cursor from "./components/Cursor/Cursor.jsx";
 
 function App() {
   const [lenis, setLenis] = useState(null);
+  const [isCursorActive, setIsCursorActive] = useState(
+    window.innerWidth > 780 ? true : false
+  );
+  const [isStarted, setIsStarted] = useState(false);
+  const [isAnimationEnded, setAnimationEnded] = useState(false);
+
+  const handleStart = () => {
+    setIsStarted(true);
+  };
+
+  const handleAnimationSkipped = () => {
+    setAnimationEnded(true);
+  };
 
   useEffect(() => {
     const lenisInstance = new Lenis();
@@ -34,12 +47,37 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsCursorActive(window.innerWidth > 780 ? true : false);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <Router>
-        {window.innerWidth > 780 && <Cursor />}
+        {isCursorActive && (
+          <Cursor isStarted={isStarted} isAnimationEnded={isAnimationEnded} />
+        )}
         <Routes>
-          <Route path="/" element={<Index lenis={lenis} />} />
+          <Route
+            path="/"
+            element={
+              <Index
+                lenis={lenis}
+                isStarted={isStarted}
+                handleStart={handleStart}
+                isAnimationEnded={isAnimationEnded}
+                handleAnimationSkipped={handleAnimationSkipped}
+              />
+            }
+          />
           {/* <Route path="/projects" element={<Projects />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} /> */}

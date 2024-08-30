@@ -18,13 +18,14 @@ export default function Video({ isStarted, handleAnimationSkipped }) {
   };
 
   const handleAnimationEnded = () => {
-    console.log("end");
     gsap.to(videoContainer.current, {
       opacity: 0,
       duration: 0.6,
       ease: "power1.out",
+      onComplete: () => {
+        handleAnimationSkipped();
+      },
     });
-    handleAnimationSkipped();
   };
 
   const handleMouseUpOrLeave = () => {
@@ -38,8 +39,10 @@ export default function Video({ isStarted, handleAnimationSkipped }) {
         opacity: 0,
         duration: 0.6,
         ease: "power1.out",
+        onComplete: () => {
+          handleAnimationSkipped();
+        },
       });
-      handleAnimationSkipped();
     }
   }, [duration, videoContainer]);
 

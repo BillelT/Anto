@@ -15,19 +15,15 @@ import Discover from "../components/Discover/Discover.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import Video from "../components/Video/Video.jsx";
 
-export default function Index({ lenis }) {
+export default function Index({
+  lenis,
+  isStarted,
+  handleStart,
+  isAnimationEnded,
+  handleAnimationSkipped,
+}) {
   const { progress } = useProgress();
-  const [isStarted, setIsStarted] = useState(false);
-  const [isAnimationEnded, setAnimationEnded] = useState(false);
   const [guitarColorIndex, setGuitarColorIndex] = useState(0);
-
-  const handleStart = () => {
-    setIsStarted(true);
-  };
-
-  const handleAnimationSkipped = () => {
-    setAnimationEnded(true);
-  };
 
   const handleGuitarColorIndex = (e) => {
     setGuitarColorIndex(e.target.dataset.index);

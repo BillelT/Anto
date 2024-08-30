@@ -2,8 +2,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import "./Cursor.css";
 
-export default function Cursor() {
+export default function Cursor({ isStarted, isAnimationEnded }) {
   const cursor = useRef();
+  const cursorText = useRef();
   //   const keyCursor = useRef();
 
   useEffect(() => {
@@ -59,7 +60,21 @@ export default function Cursor() {
 
   return (
     <>
-      <div ref={cursor} className="cursor meta" />
+      <div
+        ref={cursor}
+        className={`cursor ${
+          isStarted && isAnimationEnded ? "black-border" : ""
+        }`}
+      >
+        <p
+          ref={cursorText}
+          className={`cursor-text meta ${
+            isStarted && !isAnimationEnded ? "fade-in" : ""
+          }`}
+        >
+          Maintenez pour passer
+        </p>
+      </div>
       {/* <div ref={keyCursor} className="key-cursor">
         <img src="./Icon/Clé de sol red.svg" alt="Icône de clé de sol" />
       </div> */}
