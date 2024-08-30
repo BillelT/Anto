@@ -55,7 +55,7 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
           endTrigger: "#performances",
           end: "top 60%",
           scrub: true,
-          markers: true,
+          // markers: true,
           toggleActions: "play none none reverse",
         },
       });

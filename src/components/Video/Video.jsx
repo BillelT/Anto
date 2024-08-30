@@ -51,6 +51,8 @@ export default function Video({ isStarted, handleAnimationSkipped }) {
         ref={videoContainer}
         className="video-container full-page"
         onMouseDown={handleMouseDown}
+        onTouchStart={handleMouseDown}
+        onTouchEnd={handleMouseUpOrLeave}
         onMouseUp={handleMouseUpOrLeave}
         onMouseLeave={handleMouseUpOrLeave}
       >
