@@ -87,6 +87,7 @@ export default function Index({
 
     if (song.current) {
       song.current.loop = true;
+      song.current.volume = 1;
       song.current.play();
     }
 
