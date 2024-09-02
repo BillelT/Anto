@@ -39,11 +39,11 @@ export default function Index({
           animation.kill();
         }
 
-        const songFadeIn = gsap.to(song, {
+        const songFadeIn = gsap.to(song.current, {
           volume: 1,
           duration: 2,
           onStart: () => {
-            song.play();
+            song.current.play();
           },
         });
 
@@ -55,11 +55,11 @@ export default function Index({
           animation.kill();
         }
 
-        const songFadeOut = gsap.to(song, {
+        const songFadeOut = gsap.to(song.current, {
           volume: 0,
           duration: 2,
           onComplete: () => {
-            song.pause();
+            song.current.pause();
           },
         });
 
@@ -85,11 +85,13 @@ export default function Index({
   useEffect(() => {
     if (!isStarted) return;
 
-    const song = new Audio("./video/son anto.mp3");
+    if (song.current) {
+      song.current.loop = true;
+      song.current.volume = 1;
+      song.current.play();
+    }
 
-    song.loop = true;
-    song.volume = 1;
-    song.play();
+    song.current.load();
 
     window.scrollTo(0, 0);
   }, [isStarted]);
@@ -130,7 +132,7 @@ export default function Index({
         />
       )}
 
-      {/* <audio ref={song} src="./video/son anto.mp3"></audio> */}
+      <audio ref={song} src="./video/son anto.mp3"></audio>
 
       <Header isAnimationEnded={isAnimationEnded} handleSound={handleSound} />
       <Presentation />
