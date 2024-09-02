@@ -84,6 +84,14 @@ export default function Index({
   useEffect(() => {
     if (!isStarted) return;
 
+    const playAudio = () => {
+      song.current.play().catch((error) => {
+        console.error("Erreur lors de la lecture du son :", error);
+      });
+    };
+
+    document.addEventListener("click", playAudio, { once: true });
+
     if (song.current) {
       song.current.loop = true;
       song.current.play();
