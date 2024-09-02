@@ -24,6 +24,7 @@ export default function Index({
 }) {
   const song = useRef();
   const { progress } = useProgress();
+  const [animation, setAnimation] = useState(null);
   const [guitarColorIndex, setGuitarColorIndex] = useState(0);
 
   const handleSound = () => {
@@ -32,22 +33,36 @@ export default function Index({
     bars.forEach((bar) => {
       if (bar.classList.contains("paused")) {
         bar.classList.remove("paused");
-        gsap.to(song.current, {
+
+        if (animation) {
+          animation.kill();
+        }
+
+        const songFadeIn = gsap.to(song.current, {
           volume: 1,
           duration: 2,
           onStart: () => {
             song.current.play();
           },
         });
+
+        setAnimation(songFadeIn);
       } else {
         bar.classList.add("paused");
-        gsap.to(song.current, {
+
+        if (animation) {
+          animation.kill();
+        }
+
+        const songFadeOut = gsap.to(song.current, {
           volume: 0,
           duration: 2,
           onComplete: () => {
             song.current.pause();
           },
         });
+
+        setAnimation(songFadeOut);
       }
     });
   };

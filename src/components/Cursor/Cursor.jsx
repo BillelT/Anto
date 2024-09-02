@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import "./Cursor.css";
 
-export default function Cursor({ isStarted, isAnimationEnded }) {
+export default function Cursor({
+  isStarted,
+  isAnimationEnded,
+  isCursorActive,
+}) {
   const cursor = useRef();
   const cursorText = useRef();
   // const keyCursor = useRef();
@@ -40,14 +44,22 @@ export default function Cursor({ isStarted, isAnimationEnded }) {
   }, [isStarted, isAnimationEnded]);
 
   useEffect(() => {
-    window.addEventListener("mousemove", (e) => {
+    const handleCursorFadeIn = (e) => {
       if (e.target.classList.contains("pointer")) {
         cursor.current.classList.add("fade-out");
       } else {
         cursor.current.classList.remove("fade-out");
       }
-    });
-  }, [cursor]);
+    };
+
+    if (isCursorActive) {
+      window.addEventListener("mousemove", handleCursorFadeIn);
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleCursorFadeIn);
+    };
+  }, [cursor, isCursorActive]);
 
   useEffect(() => {
     gsap.set(cursor.current, {

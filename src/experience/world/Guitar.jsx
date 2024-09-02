@@ -56,9 +56,9 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
 
       // Legacy to performances
       gsap.to(guitarGroup.current.position, {
-        x: !isLargeScreen ? -0.16 : 0.05,
+        x: !isLargeScreen ? -0.11 : 0.05,
         y: -0.25,
-        z: !isLargeScreen ? 0.75 : 0.8,
+        z: !isLargeScreen ? 0.6 : 0.8,
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: "#legacy",
@@ -89,8 +89,8 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
       });
       // Performances to freedom
       gsap.to(guitarGroup.current.position, {
-        x: !isLargeScreen ? 0.25 : -0.075,
-        y: -0.44,
+        x: !isLargeScreen ? 0.305 : -0.075,
+        y: -0.42,
         z: !isLargeScreen ? 0.9 : 0.9,
         ease: "power1.inOut",
         immediateRender: false,
