@@ -85,7 +85,7 @@ export default function Index({
   useEffect(() => {
     if (!isStarted) return;
 
-    const song = new Audio("audio_file.mp3");
+    const song = new Audio("./video/son anto.mp3");
 
     song.loop = true;
     song.volume = 1;
@@ -130,7 +130,7 @@ export default function Index({
         />
       )}
 
-      <audio ref={song} src="./video/son anto.mp3"></audio>
+      {/* <audio ref={song} src="./video/son anto.mp3"></audio> */}
 
       <Header isAnimationEnded={isAnimationEnded} handleSound={handleSound} />
       <Presentation />
