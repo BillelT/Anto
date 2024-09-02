@@ -2,7 +2,11 @@ import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import "./Video.css";
 
-export default function Video({ isStarted, handleAnimationSkipped }) {
+export default function Video({
+  isStarted,
+  handleAnimationSkipped,
+  isCursorActive,
+}) {
   const videoContainer = useRef();
   const animation = useRef();
   const interval = useRef(null);

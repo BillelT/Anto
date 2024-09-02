@@ -90,7 +90,7 @@ export default function Index({
       });
     };
 
-    document.addEventListener("click", playAudio, { once: true });
+    document.addEventListener("touchend", playAudio, { once: true });
 
     if (song.current) {
       song.current.loop = true;

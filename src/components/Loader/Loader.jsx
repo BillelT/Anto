@@ -86,7 +86,11 @@ export default function Loader({ progress, handleStart }) {
 
   return (
     <>
-      <div className="loader" onClick={progress === 100 ? handleStart : null}>
+      <div
+        className="loader"
+        onMouseDown={progress === 100 ? handleStart : null}
+        onTouchStart={progress === 100 ? handleStart : null}
+      >
         <img
           ref={logo}
           src="./Logo/Logo Loader unload white.svg"
