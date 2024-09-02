@@ -39,11 +39,11 @@ export default function Index({
           animation.kill();
         }
 
-        const songFadeIn = gsap.to(song.current, {
+        const songFadeIn = gsap.to(song, {
           volume: 1,
           duration: 2,
           onStart: () => {
-            song.current.play();
+            song.play();
           },
         });
 
@@ -55,11 +55,11 @@ export default function Index({
           animation.kill();
         }
 
-        const songFadeOut = gsap.to(song.current, {
+        const songFadeOut = gsap.to(song, {
           volume: 0,
           duration: 2,
           onComplete: () => {
-            song.current.pause();
+            song.pause();
           },
         });
 
@@ -85,11 +85,11 @@ export default function Index({
   useEffect(() => {
     if (!isStarted) return;
 
-    if (song.current) {
-      song.current.loop = true;
-      song.current.volume = 1;
-      song.current.play();
-    }
+    const song = new Audio("audio_file.mp3");
+
+    song.loop = true;
+    song.volume = 1;
+    song.play();
 
     window.scrollTo(0, 0);
   }, [isStarted]);
