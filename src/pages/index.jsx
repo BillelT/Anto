@@ -91,6 +91,10 @@ export default function Index({
       song.current.play();
     }
 
+    song.current.loop = true;
+    song.current.volume = 1;
+    song.current.play();
+
     song.current.load();
 
     window.scrollTo(0, 0);
