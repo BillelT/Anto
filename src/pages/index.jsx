@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
 import { useProgress } from "@react-three/drei";
@@ -22,8 +22,35 @@ export default function Index({
   isAnimationEnded,
   handleAnimationSkipped,
 }) {
+  const song = useRef();
   const { progress } = useProgress();
   const [guitarColorIndex, setGuitarColorIndex] = useState(0);
+
+  const handleSound = () => {
+    const bars = document.querySelectorAll(".bar");
+
+    bars.forEach((bar) => {
+      if (bar.classList.contains("paused")) {
+        bar.classList.remove("paused");
+        gsap.to(song.current, {
+          volume: 1,
+          duration: 2,
+          onStart: () => {
+            song.current.play();
+          },
+        });
+      } else {
+        bar.classList.add("paused");
+        gsap.to(song.current, {
+          volume: 0,
+          duration: 2,
+          onComplete: () => {
+            song.current.pause();
+          },
+        });
+      }
+    });
+  };
 
   const handleGuitarColorIndex = (e) => {
     setGuitarColorIndex(e.target.dataset.index);
@@ -40,7 +67,19 @@ export default function Index({
   }, [isAnimationEnded, lenis]);
 
   useEffect(() => {
+    if (!isStarted) return;
+
+    if (song.current) {
+      song.current.loop = true;
+      song.current.play();
+    }
+
+    window.scrollTo(0, 0);
+  }, [isStarted]);
+
+  useEffect(() => {
     if (!isAnimationEnded) return;
+
     const fadeInTexts = document.querySelectorAll(".fade-in-text-reveal");
 
     fadeInTexts.forEach((element) => {
@@ -73,7 +112,9 @@ export default function Index({
         />
       )}
 
-      <Header />
+      <audio ref={song} src="./video/son anto.mp3"></audio>
+
+      <Header isAnimationEnded={isAnimationEnded} handleSound={handleSound} />
       <Presentation />
       <Legacy />
       <Performances />

@@ -15,7 +15,7 @@ import Cursor from "./components/Cursor/Cursor.jsx";
 function App() {
   const [lenis, setLenis] = useState(null);
   const [isCursorActive, setIsCursorActive] = useState(
-    window.innerWidth > 780 ? true : false
+    window.innerWidth > 400 ? true : false
   );
   const [isStarted, setIsStarted] = useState(false);
   const [isAnimationEnded, setAnimationEnded] = useState(false);
@@ -49,7 +49,7 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsCursorActive(window.innerWidth > 780 ? true : false);
+      setIsCursorActive(window.innerWidth > 400 ? true : false);
     };
 
     window.addEventListener("resize", handleResize);

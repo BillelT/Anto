@@ -61,19 +61,9 @@ export default function Discover({ handleGuitarColorIndex }) {
                 onClick={handleGuitarColorIndex}
                 data-index={2}
               ></article>
-              <article
-                className="rounded color-choice pointer bg-red"
-                onClick={handleGuitarColorIndex}
-                data-index={3}
-              ></article>
-              <article
-                className="rounded color-choice pointer bg-purple"
-                onClick={handleGuitarColorIndex}
-                data-index={4}
-              ></article>
             </div>
             <button
-              className="button cta"
+              className="button cta pointer"
               onMouseOver={ctaButtonAnimation}
               onMouseOut={removeButtonAnimation}
             >

@@ -10,44 +10,55 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
   const guitar = useRef();
   const guitarGroup = useRef();
-  const [offsetX, setOffsetX] = useState(window.innerWidth < 780 ? 0.2 : 0);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 780);
+  const [offsetX, setOffsetX] = useState(isLargeScreen ? 0 : 0.2);
   const { scene } = useGLTF("./experience/models/Guitar.glb");
 
   useEffect(() => {
     if (guitarColorIndex == 0) {
-      scene.children[0].children[0].material.color.r = 0;
-      scene.children[0].children[0].material.color.g = 0;
-      scene.children[0].children[0].material.color.b = 0;
+      scene.children[0].children[0].material.color.set(0x000000);
     }
     if (guitarColorIndex == 1) {
-      scene.children[0].children[0].material.color.r = 0.2;
-      scene.children[0].children[0].material.color.g = 0.2;
-      scene.children[0].children[0].material.color.b = 1;
+      scene.children[0].children[0].material.color.set(0x3333ff);
     }
     if (guitarColorIndex == 2) {
-      scene.children[0].children[0].material.color.r = 1;
-      scene.children[0].children[0].material.color.g = 1;
-      scene.children[0].children[0].material.color.b = 1;
-    }
-    if (guitarColorIndex == 3) {
-      scene.children[0].children[0].material.color.r = 1;
-      scene.children[0].children[0].material.color.g = 0.2;
-      scene.children[0].children[0].material.color.b = 0.2;
-    }
-    if (guitarColorIndex == 4) {
-      scene.children[0].children[0].material.color.r = 1;
-      scene.children[0].children[0].material.color.g = 0.2;
-      scene.children[0].children[0].material.color.b = 1;
+      scene.children[0].children[0].material.color.set(0xffffff);
     }
   }, [guitarColorIndex]);
 
   useEffect(() => {
+    const handleResize = () => {
+      const largeScreen = window.innerWidth > 780;
+      setIsLargeScreen(largeScreen);
+      setOffsetX(largeScreen ? 0 : 0.2);
+    };
+
+    handleResize(); // Update immediately on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     if (guitarGroup.current && isAnimationEnded) {
+      // Kill previous scroll triggers
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (
+          trigger.vars &&
+          trigger.vars.id &&
+          trigger.vars.id.startsWith("guitar-trigger-")
+        ) {
+          trigger.kill();
+        }
+      });
+
       // Legacy to performances
       gsap.to(guitarGroup.current.position, {
-        x: window.innerWidth < 780 ? -0.16 : 0.05,
+        x: !isLargeScreen ? -0.16 : 0.05,
         y: -0.25,
-        z: window.innerWidth < 780 ? 0.75 : 0.8,
+        z: !isLargeScreen ? 0.75 : 0.8,
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: "#legacy",
@@ -57,6 +68,7 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
           scrub: true,
           // markers: true,
           toggleActions: "play none none reverse",
+          id: "guitar-trigger-legacy-to-perf",
         },
       });
       // Along performances
@@ -72,13 +84,14 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
           scrub: true,
           // markers: true,
           toggleActions: "play none none reverse",
+          id: "guitar-trigger-perf",
         },
       });
       // Performances to freedom
       gsap.to(guitarGroup.current.position, {
-        x: window.innerWidth < 780 ? 0.25 : -0.075,
+        x: !isLargeScreen ? 0.25 : -0.075,
         y: -0.44,
-        z: window.innerWidth < 780 ? 0.9 : 0.9,
+        z: !isLargeScreen ? 0.9 : 0.9,
         ease: "power1.inOut",
         immediateRender: false,
         scrollTrigger: {
@@ -89,6 +102,7 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
           scrub: true,
           // markers: true,
           toggleActions: "play none none reverse",
+          id: "guitar-trigger-perf-to-freedom",
         },
       });
       gsap.to(guitarGroup.current.rotation, {
@@ -103,11 +117,12 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
           scrub: true,
           // markers: true,
           toggleActions: "play none none reverse",
+          id: "guitar-trigger-perf-to-freedom-2",
         },
       });
       // Freedom to Discover
       gsap.to(guitarGroup.current.position, {
-        x: window.innerWidth < 780 ? 0.02 : -0.4,
+        x: !isLargeScreen ? 0.02 : -0.4,
         y: 0,
         z: 0.15,
         ease: "power1.inOut",
@@ -120,6 +135,7 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
           scrub: true,
           // markers: true,
           toggleActions: "play none none reverse",
+          id: "guitar-trigger-freedom-to-discover",
         },
       });
       gsap.to(guitarGroup.current.rotation, {
@@ -134,22 +150,11 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
           scrub: true,
           // markers: true,
           toggleActions: "play none none reverse",
+          id: "guitar-trigger-freedom-to-discover-2",
         },
       });
     }
-  }, [guitarGroup, isAnimationEnded]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setOffsetX(window.innerWidth < 780 ? 0.2 : 0);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  }, [isAnimationEnded, isLargeScreen]);
 
   return (
     <>

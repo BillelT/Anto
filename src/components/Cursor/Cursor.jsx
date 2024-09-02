@@ -1,11 +1,53 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import "./Cursor.css";
 
 export default function Cursor({ isStarted, isAnimationEnded }) {
   const cursor = useRef();
   const cursorText = useRef();
-  //   const keyCursor = useRef();
+  // const keyCursor = useRef();
+
+  useEffect(() => {
+    const handleMouseDown = () => {
+      gsap.to(".hold-click-fill", {
+        duration: 1.3,
+        ease: "power1.inOut",
+        clipPath: "circle(100%)",
+      });
+    };
+
+    const handleMouseUp = () => {
+      gsap.to(".hold-click-fill", {
+        duration: 1.3,
+        ease: "power1.inOut",
+        clipPath: "circle(0%)",
+      });
+    };
+
+    if (isStarted && !isAnimationEnded) {
+      window.addEventListener("mousedown", handleMouseDown);
+      window.addEventListener("mouseup", handleMouseUp);
+    }
+
+    if (isStarted && isAnimationEnded) {
+      handleMouseUp();
+    }
+
+    return () => {
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isStarted, isAnimationEnded]);
+
+  useEffect(() => {
+    window.addEventListener("mousemove", (e) => {
+      if (e.target.classList.contains("pointer")) {
+        cursor.current.classList.add("fade-out");
+      } else {
+        cursor.current.classList.remove("fade-out");
+      }
+    });
+  }, [cursor]);
 
   useEffect(() => {
     gsap.set(cursor.current, {
@@ -42,30 +84,15 @@ export default function Cursor({ isStarted, isAnimationEnded }) {
 
     window.addEventListener("mousemove", moveCursor);
 
-    const largers = document.querySelectorAll(".larger-cursor");
-
-    largers.forEach((larger) => {
-      larger.addEventListener("mouseenter", handleMouseEnter);
-      larger.addEventListener("mouseleave", handleMouseLeave);
-    });
-
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      largers.forEach((larger) => {
-        larger.removeEventListener("mouseenter", handleMouseEnter);
-        larger.removeEventListener("mouseleave", handleMouseLeave);
-      });
     };
   }, [cursor]);
 
   return (
     <>
-      <div
-        ref={cursor}
-        className={`cursor ${
-          isStarted && isAnimationEnded ? "black-border" : ""
-        }`}
-      >
+      <div ref={cursor} className="cursor gold-border">
+        <span className="hold-click-fill"></span>
         <p
           ref={cursorText}
           className={`cursor-text meta ${
@@ -75,9 +102,6 @@ export default function Cursor({ isStarted, isAnimationEnded }) {
           Maintenez pour passer
         </p>
       </div>
-      {/* <div ref={keyCursor} className="key-cursor">
-        <img src="./Icon/Clé de sol red.svg" alt="Icône de clé de sol" />
-      </div> */}
     </>
   );
 }

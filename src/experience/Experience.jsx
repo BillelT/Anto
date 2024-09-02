@@ -5,10 +5,10 @@ import {
   // useTexture,
   // shaderMaterial,
 } from "@react-three/drei";
-import { Perf } from "r3f-perf";
-import Debug from "./utils/Debug";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+// import { Perf } from "r3f-perf";
+// import Debug from "./utils/Debug";
 
 /** Custom import */
 import Guitar from "./world/Guitar.jsx";

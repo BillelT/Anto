@@ -105,7 +105,7 @@ export default function Loader({ progress, handleStart }) {
         </span>
         <button
           ref={enter}
-          className="body white-text hover-underline-from-center red launch center opacity-0 y-20"
+          className="body white-text hover-underline-from-center red launch center opacity-0 y-20 pointer"
         >
           Enter
         </button>

@@ -14,7 +14,7 @@ export default function Video({ isStarted, handleAnimationSkipped }) {
     interval.current = setInterval(() => {
       const elapsedTime = Date.now() - startTime;
       setDuration(elapsedTime);
-    }, 1);
+    }, 50);
   };
 
   const handleAnimationEnded = () => {
@@ -66,7 +66,7 @@ export default function Video({ isStarted, handleAnimationSkipped }) {
           onEnded={handleAnimationEnded}
           className="video video-animation full-page-child"
         >
-          <source src="/video/Version Complete 02.mp4" type="video/mp4" />
+          <source src="/video/Anto Animation Finale.mp4" type="video/mp4" />
         </video>
       </div>
     </>

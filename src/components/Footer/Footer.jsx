@@ -8,32 +8,40 @@ export default function Footer() {
             <nav>
               <ul className="grid rg-8">
                 <li>
-                  <h3 className="h3 flex cg-8 aie hover-text-gold">
-                    Anto <span className="kanji meta">アント</span>
+                  <h3 className="h3 flex cg-8 aic hover-text-gold w-fit-c pointer">
+                    Anto <span className="kanji meta pointer">アント</span>
                   </h3>
                 </li>
                 <li>
-                  <h3 className="h3 flex cg-8 aie hover-text-gold">
+                  <h3 className="h3 flex cg-8 aic hover-text-gold w-fit-c pointer">
+                    pāru burū{" "}
+                    <span className="kanji meta pointer">パールブルー</span>
+                  </h3>
+                </li>
+                <li>
+                  <h3 className="h3 flex cg-8 aic hover-text-gold w-fit-c pointer">
+                    Shiro no Rei-soku{" "}
+                    <span className="kanji meta pointer">白の霊息</span>
+                  </h3>
+                </li>
+                {/* <li>
+                  <h3 className="h3 flex cg-8 aic hover-text-gold w-fit-c pointer">
                     Jikan no yūgasa{" "}
-                    <span className="kanji meta">時間の優雅さ</span>
+                    <span className="kanji meta pointer">時間の優雅さ</span>
+                  </h3>
+                </li> */}
+                {/* <li>
+                  <h3 className="h3 flex cg-8 aic hover-text-gold w-fit-c pointer">
+                    uesutan{" "}
+                    <span className="kanji meta pointer">ウエスタン</span>
                   </h3>
                 </li>
                 <li>
-                  <h3 className="h3 flex cg-8 aie hover-text-gold">
-                    pāru burū <span className="kanji meta">パールブルー</span>
-                  </h3>
-                </li>
-                <li>
-                  <h3 className="h3 flex cg-8 aie hover-text-gold">
-                    uesutan <span className="kanji meta">ウエスタン</span>
-                  </h3>
-                </li>
-                <li>
-                  <h3 className="h3 flex cg-8 aie hover-text-gold">
+                  <h3 className="h3 flex cg-8 aic hover-text-gold w-fit-c pointer">
                     aki no bakuhatsu{" "}
-                    <span className="kanji meta">秋の爆発</span>
+                    <span className="kanji meta pointer">秋の爆発</span>
                   </h3>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </article>
@@ -42,13 +50,13 @@ export default function Footer() {
             <nav>
               <ul className="grid rg-sm-16-ls-32 ">
                 <li>
-                  <h2 className="h2">À propos</h2>
+                  <h2 className="h2  hover-text-gold pointer">À propos</h2>
                 </li>
                 <li>
-                  <h2 className="h2">Certification</h2>
+                  <h2 className="h2  hover-text-gold pointer">Certification</h2>
                 </li>
                 <li>
-                  <h2 className="h2">Contact</h2>
+                  <h2 className="h2 hover-text-gold  pointer">Contact</h2>
                 </li>
               </ul>
             </nav>
@@ -59,16 +67,16 @@ export default function Footer() {
             <nav className="gc-2-9">
               <ul className="grid ls-flex rg-8 cg-32">
                 <li className="hover-underline-from-center white w-fit-c">
-                  <p className="body">Instagram</p>
+                  <p className="body pointer">Instagram</p>
                 </li>
                 <li className="hover-underline-from-center white w-fit-c">
-                  <p className="body">Linkedin</p>
+                  <p className="body pointer">Linkedin</p>
                 </li>
                 <li className="hover-underline-from-center white w-fit-c">
-                  <p className="body">Behance</p>
+                  <p className="body pointer">Behance</p>
                 </li>
                 <li className="hover-underline-from-center white w-fit-c">
-                  <p className="body">Twitch</p>
+                  <p className="body pointer">Twitch</p>
                 </li>
               </ul>
             </nav>
@@ -86,21 +94,21 @@ export default function Footer() {
             <nav className="gc-2-9">
               <ul className="grid rg-8 cg-32 l-ls-flex">
                 <li className="hover-underline-from-center w-fit-c white">
-                  <p className="meta">Mentions légales</p>
+                  <p className="meta pointer">Mentions légales</p>
                 </li>
                 <li className="hover-underline-from-center w-fit-c white">
-                  <p className="meta">Conditions générales de ventes</p>
+                  <p className="meta pointer">Conditions générales de ventes</p>
                 </li>
                 <li className="hover-underline-from-center w-fit-c white">
-                  <p className="meta">Politiques de confidentialité</p>
+                  <p className="meta pointer">Politiques de confidentialité</p>
                 </li>
               </ul>
             </nav>
             <aside className="gc-9-12 ase grid rg-8 l-ls-flex cg-32 jc-fe">
-              <p className="meta hover-underline-from-center w-fit-c white">
+              <p className="meta pointer hover-underline-from-center w-fit-c white">
                 Partenariat
               </p>
-              <p className="meta hover-underline-from-center w-fit-c white">
+              <p className="meta pointer hover-underline-from-center w-fit-c white">
                 Service client
               </p>
             </aside>

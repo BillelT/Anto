@@ -228,7 +228,6 @@
 /* Underline from center */
 .hover-underline-from-center {
   position: relative;
-  cursor: pointer;
 }
 
 .hover-underline-from-center::after {
@@ -267,7 +266,6 @@
 /* Text to gold color */
 .hover-text-gold {
   transition: 0.9s ease-in-out;
-  cursor: pointer;
 }
 
 .hover-text-gold:hover {
