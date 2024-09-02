@@ -88,8 +88,8 @@ export default function Loader({ progress, handleStart }) {
     <>
       <div
         className="loader"
-        onMouseDown={progress === 100 ? handleStart : null}
-        onTouchStart={progress === 100 ? handleStart : null}
+        onClick={progress === 100 ? handleStart : null}
+        onTouchEnd={progress === 100 ? handleStart : null}
       >
         <img
           ref={logo}

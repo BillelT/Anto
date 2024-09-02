@@ -72,6 +72,16 @@ export default function Video({
         >
           <source src="/video/Anto Animation Finale.mp4" type="video/mp4" />
         </video>
+
+        {!isCursorActive && (
+          <span
+            className=" meta underline white-text skip pointer"
+            onClick={handleAnimationEnded}
+            onTouchEnd={handleAnimationEnded}
+          >
+            Passer
+          </span>
+        )}
       </div>
     </>
   );

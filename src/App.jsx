@@ -79,6 +79,7 @@ function App() {
                 handleStart={handleStart}
                 isAnimationEnded={isAnimationEnded}
                 handleAnimationSkipped={handleAnimationSkipped}
+                isCursorActive={isCursorActive}
               />
             }
           />
