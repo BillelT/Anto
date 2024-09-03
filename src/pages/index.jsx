@@ -90,8 +90,6 @@ export default function Index({
       song.current.play();
     }
 
-    song.current.load();
-
     window.scrollTo(0, 0);
   }, [isStarted]);
 

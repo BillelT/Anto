@@ -67,6 +67,7 @@ export default function Video({
           ref={animation}
           controls={false}
           playsInline
+          muted
           onEnded={handleAnimationEnded}
           className="video video-animation full-page-child"
         >
