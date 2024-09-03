@@ -70,14 +70,26 @@ export default function Footer() {
                   <p className="body pointer">Instagram</p>
                 </li>
                 <li className="hover-underline-from-center white w-fit-c">
-                  <p className="body pointer">Linkedin</p>
+                  <a
+                    href="https://www.linkedin.com/in/billel-tighidet-76b292234/"
+                    className="body pointer white-text no-underline"
+                    target="_blank"
+                  >
+                    Linkedin
+                  </a>
                 </li>
                 <li className="hover-underline-from-center white w-fit-c">
-                  <p className="body pointer">Behance</p>
+                  <a
+                    href="https://www.behance.net/billeltighidet"
+                    className="body pointer white-text no-underline"
+                    target="_blank"
+                  >
+                    Behance
+                  </a>
                 </li>
-                <li className="hover-underline-from-center white w-fit-c">
+                {/* <li className="hover-underline-from-center white w-fit-c">
                   <p className="body pointer">Twitch</p>
-                </li>
+                </li> */}
               </ul>
             </nav>
             <p className="flex gc-11 cg-8 ase jc-fe">

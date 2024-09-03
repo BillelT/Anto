@@ -130,6 +130,10 @@ canvas {
   text-underline-offset: 2px;
 }
 
+.no-underline {
+  text-decoration: none;
+}
+
 /* Text Style classes */
 h1,
 h2 {
