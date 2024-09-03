@@ -12,7 +12,7 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
   const guitarGroup = useRef();
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 780);
   const [offsetX, setOffsetX] = useState(isLargeScreen ? 0 : 0.2);
-  const { scene } = useGLTF("./experience/models/Guitar.glb");
+  const { scene } = useGLTF("./experience/models/Guitar 2.glb");
 
   useEffect(() => {
     if (guitarColorIndex == 0) {
