@@ -86,9 +86,18 @@ export default function Index({
     if (!isStarted) return;
 
     if (song.current) {
+      song.current.addEventListener("canplaythrough", () => {
+        song.current.play().catch((error) => {
+          console.error("Playback prevented:", error);
+        });
+      });
+
       song.current.loop = true;
+      song.current.volume = 1;
       song.current.play();
     }
+
+    song.current.load();
 
     window.scrollTo(0, 0);
   }, [isStarted]);
