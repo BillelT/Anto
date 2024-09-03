@@ -12,19 +12,43 @@ export default function Guitar({ guitarColorIndex, isAnimationEnded }) {
   const guitarGroup = useRef();
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 780);
   const [offsetX, setOffsetX] = useState(isLargeScreen ? 0 : 0.2);
-  const { scene } = useGLTF("./experience/models/Guitar 2.glb");
+  const { scene } = useGLTF("./experience/models/Guitarr.glb");
 
-  useEffect(() => {
-    if (guitarColorIndex == 0) {
-      scene.children[0].children[0].material.color.set(0x000000);
-    }
-    if (guitarColorIndex == 1) {
-      scene.children[0].children[0].material.color.set(0x3333ff);
-    }
-    if (guitarColorIndex == 2) {
-      scene.children[0].children[0].material.color.set(0xffffff);
-    }
-  }, [guitarColorIndex]);
+  // /**
+  //  * Material Variables
+  //  */
+
+  // // Gold
+  // const goldMaterial = scene.children[0].children[7].material.clone();
+
+  // // Silver
+  // const silverMaterial = goldMaterial.clone();
+  // silverMaterial.color.set(0xc0c0c0);
+
+  // // Black
+  // const blackCoreMaterial = scene.children[0].children[0].material.clone();
+
+  // // Blue
+  // const blueMaterial = blackCoreMaterial.clone();
+  // blueMaterial.color.set(0x0000af);
+
+  // // White
+  // const whiteMaterial = blackCoreMaterial.clone();
+  // whiteMaterial.color.set(0xffffff);
+
+  // useEffect(() => {
+  //   if (guitarColorIndex == 0) {
+  //     // Core
+  //     scene.children[0].children[0].material = blackCoreMaterial.clone();
+  //   }
+  //   if (guitarColorIndex == 1) {
+  //     // Core
+  //     scene.children[0].children[0].material = blueMaterial.clone();
+  //   }
+  //   if (guitarColorIndex == 2) {
+  //     scene.children[0].children[0].material = whiteMaterial.clone();
+  //   }
+  // }, [guitarColorIndex]);
 
   useEffect(() => {
     const handleResize = () => {

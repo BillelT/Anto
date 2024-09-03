@@ -67,11 +67,13 @@ export default function Video({
           ref={animation}
           controls={false}
           playsInline
-          muted
           onEnded={handleAnimationEnded}
           className="video video-animation full-page-child"
         >
-          <source src="/video/Anto Animation Finale.mp4" type="video/mp4" />
+          <source
+            src="/video/Anto animation song finale.mp4"
+            type="video/mp4"
+          />
         </video>
 
         {!isCursorActive && (

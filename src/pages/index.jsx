@@ -78,18 +78,6 @@ export default function Index({
   useEffect(() => {
     if (!isStarted) return;
 
-    if (song.current) {
-      song.current.addEventListener("canplaythrough", () => {
-        song.current.play().catch((error) => {
-          console.error("Playback prevented:", error);
-        });
-      });
-
-      song.current.loop = true;
-      song.current.volume = 1;
-      song.current.play();
-    }
-
     window.scrollTo(0, 0);
   }, [isStarted]);
 
@@ -115,6 +103,29 @@ export default function Index({
         });
       }
     });
+
+    if (song.current) {
+      song.current.addEventListener("canplaythrough", () => {
+        song.current.play().catch((error) => {
+          console.error("Playback prevented:", error);
+        });
+      });
+
+      song.current.loop = true;
+
+      gsap.fromTo(
+        song.current,
+        {
+          volume: 0,
+        },
+        {
+          volume: 1,
+          duration: 1,
+          delay: 0.5,
+        }
+      );
+      song.current.play();
+    }
   }, [isAnimationEnded]);
 
   return (
