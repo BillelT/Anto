@@ -97,10 +97,10 @@ export default function Footer() {
                   <p className="meta pointer">Mentions légales</p>
                 </li>
                 <li className="hover-underline-from-center w-fit-c white">
-                  <p className="meta pointer">Conditions générales de ventes</p>
+                  <p className="meta pointer">Conditions de vente</p>
                 </li>
                 <li className="hover-underline-from-center w-fit-c white">
-                  <p className="meta pointer">Politiques de confidentialité</p>
+                  <p className="meta pointer">Politique de confidentialité</p>
                 </li>
               </ul>
             </nav>

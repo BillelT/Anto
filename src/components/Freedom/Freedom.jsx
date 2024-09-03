@@ -15,7 +15,7 @@ export default function Freedom() {
             </p>
             <p className="body">
               Leur système de réglage manuel permet un accordage traditionnel et
-              libre afin que chaque notes que vous jouez soi unique
+              libre afin que chaque note que vous jouez soit unique.
             </p>
           </div>
         </article>
