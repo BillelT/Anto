@@ -25,45 +25,38 @@ export default function Index({
 }) {
   const song = useRef();
   const { progress } = useProgress();
-  const [animation, setAnimation] = useState(null);
   const [guitarColorIndex, setGuitarColorIndex] = useState(0);
+  const [isThrottled, setIsThrottled] = useState(false);
 
   const handleSound = () => {
+    if (isThrottled) return;
+
+    setIsThrottled(true);
+    setTimeout(() => setIsThrottled(false), 2100);
+
     const bars = document.querySelectorAll(".bar");
 
     bars.forEach((bar) => {
       if (bar.classList.contains("paused")) {
         bar.classList.remove("paused");
 
-        if (animation) {
-          animation.kill();
-        }
-
-        const songFadeIn = gsap.to(song.current, {
+        gsap.to(song.current, {
           volume: 1,
           duration: 2,
           onStart: () => {
             song.current.play();
           },
         });
-
-        setAnimation(songFadeIn);
       } else {
         bar.classList.add("paused");
 
-        if (animation) {
-          animation.kill();
-        }
-
-        const songFadeOut = gsap.to(song.current, {
+        gsap.to(song.current, {
           volume: 0,
           duration: 2,
           onComplete: () => {
             song.current.pause();
           },
         });
-
-        setAnimation(songFadeOut);
       }
     });
   };
