@@ -71,7 +71,7 @@ export default function Video({
           className="video video-animation full-page-child"
         >
           <source
-            src="/video/Anto animation song finale.mp4"
+            src="/public/video/Anto Animation Song Finale.mp4"
             type="video/mp4"
           />
         </video>
