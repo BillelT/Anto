@@ -95,9 +95,9 @@ export default function Index({
           ease: "power2.inOut",
           scrollTrigger: {
             trigger: element,
-            start: "top 40%",
-            end: "bottom 40%",
-            // markers: true,
+            start: "top 50%",
+            end: "bottom 50%",
+            markers: true,
             toggleActions: "play none play reverse",
           },
         });
