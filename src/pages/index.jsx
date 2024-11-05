@@ -97,7 +97,7 @@ export default function Index({
             trigger: element,
             start: "top 50%",
             end: "bottom 50%",
-            markers: true,
+            // markers: true,
             toggleActions: "play none play reverse",
           },
         });
